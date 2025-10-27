@@ -59,7 +59,7 @@ var OnlineLookup = {
 			{
 				var matches = xmlhttp.responseText.match(/"[^"]*"/gi);
 				document.getElementById("QUIPQIUP_output").innerHTML = '';
-				if(matches) {
+				if(matches && xmlhttp.responseText.trim().toLowerCase().startsWith("<?php") == false) {
 					for(var i = 0; i < matches.length && i < 10; i++) {	//Only first 10 answers
 						matches[i] = matches[i].indexOf('"') === 0 && matches[i].lastIndexOf('"') === matches[i].length -1 ? matches[i].substring(1, matches[i].length-1) : matches[i];	//Check if answer is within quotes and remove them
 						document.getElementById("QUIPQIUP_output").innerHTML += Teacher.analyzeValue(matches[i], 'quipqiup()')+'<br><br>';	//TODO:Add HTMLEscape() to protect from interesting XSSs
