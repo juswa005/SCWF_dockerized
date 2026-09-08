@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80"
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+    # Network restriction for offline validation
+    # networks:
+    #   - scwf_net
+
+  # Optional backend for legacy online lookups
+  backend:
+    image: php:8.2-apache
+    volumes:
+      - ./ServerSidePHP:/var/www/html/ServerSidePHP
+    # profiles:
+    #  - legacy
+
+# networks:
+#   scwf_net:
+#     internal: true # For completely disconnecting from the internet if desired

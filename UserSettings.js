@@ -40,9 +40,9 @@ var sidebar_default_display = false;					//value in [true|false] (boolean) //Def
 var explanation_default_display = true;					//value in [true|false] (boolean) //Default true	//Hide explanatory text
 
 //lookup_proxy_host can later be used to host our own quipqiup and playfair server to go fully offline
-var force_fully_offline = false;						//value in [true|false] (boolean) //Default false	//Never ever preform an online lookup. Can be used in case of client assignments. Overrides other online lookup settings. //Default false
+var force_fully_offline = true;						//value in [true|false] (boolean) //Default false	//Never ever preform an online lookup. Can be used in case of client assignments. Overrides other online lookup settings. //Default false
 var auto_online_lookup = false;							//value in [true|false] (boolean) //Default false	//Auto execute quipqiup, playfair and vigenere after each change in text, it's overkill for easy crypto but maybe useful for hard ones 
-var lookup_proxy_host = 'https://';						//value (URL starting with http(s)?:// ) (string)	//Default 'https://<your-url>/ServerSidePHP/'
+var lookup_proxy_host = '/ServerSidePHP';						//value (URL starting with http(s)?:// ) (string)	//Default 'https://<your-url>/ServerSidePHP/'
 
 
 var min_encoded_string_length = 10;						//value in [3..x] (integer) //Default 10			//When a too short value is entered it will decrease accuracy for short challenges
